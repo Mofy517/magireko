@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#4f2b78">
+<title>スマスロ マギアレコード 設定判別ツール</title>
+<style>
+body{margin:0;background:#f5f1f8;color:#222;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Yu Gothic",sans-serif}
+header{background:#4f2b78;color:#fff;padding:18px 16px;position:sticky;top:0;z-index:5}
+h1{font-size:20px;margin:0 0 4px}main{max-width:760px;margin:auto;padding:12px}.card{background:#fff;border-radius:14px;padding:14px;margin:10px 0;box-shadow:0 2px 10px #0001}
+h2{font-size:17px;margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 120px;gap:8px 10px;align-items:center}
+label{font-size:14px}input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #ccc;border-radius:9px;font-size:16px}
+button{width:100%;padding:14px;border:0;border-radius:10px;font-size:16px;font-weight:700}.primary{background:#4f2b78;color:#fff}.clear{margin-top:8px}
+.note,.small{font-size:12px;color:#666;line-height:1.6}.result{text-align:center;font-size:25px;font-weight:800}
+.bar{height:12px;background:#eee;border-radius:10px;overflow:hidden;margin:8px 0 14px}.bar i{display:block;height:100%;background:#4f2b78}
+table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}td:last-child,th:last-child{text-align:right}
+.warn{background:#fff3cd}.strong{background:#f2e8fa}
+</style></head>
+<body>
+<header><h1>スマスロ マギアレコード</h1><div>魔法少女まどか☆マギカ外伝・設定判別ツール</div></header>
+<main>
+
+<div class="card"><h2>基本データ</h2><div class="grid">
+<label>通常時ゲーム数</label><input id="g" type="number" min="0">
+<label>ボーナス初当たり</label><input id="bb" type="number" min="0">
+<label>AT初当たり</label><input id="at" type="number" min="0">
+</div><p class="note">公開値：BB＝設定1～6で1/240.6、1/236.1、1/222.8、1/208.5、1/195.1、1/184.3。AT＝1/654.6～1/416.7。</p></div>
+
+<div class="card"><h2>弱チェリー</h2><div class="grid">
+<label>通常時総ゲーム数</label><input id="cg" type="number" min="0">
+<label>弱チェリー回数</label><input id="ch" type="number" min="0">
+</div><p class="note">設定1～6＝1/60.0、1/57.7、1/55.5、1/53.5、1/51.7、1/50.0。</p></div>
+
+<div class="card"><h2>スイカ → CZ</h2><div class="grid">
+<label>スイカ成立回数（対象モード）</label><input id="swN" type="number" min="0">
+<label>マギアチャレンジ当選</label><input id="swK" type="number" min="0">
+<label>黒江チャレンジ当選</label><input id="swBK" type="number" min="0">
+</div><p class="note">さなモード以外のマギアチャレンジは設定1～6で約19.9～32.8%。黒江チャレンジは約0.4～0.8%。マギアチャレンジ前兆中など対象外を除いて入力。</p></div>
+
+<div class="card"><h2>魔法少女モード選択</h2><div class="grid">
+<label>有利区間移行時／AT終了時 総回数</label><input id="modeN" type="number" min="0">
+<label>いろは以外を選択</label><input id="modeOther" type="number" min="0">
+<label>報酬レベル3</label><input id="rl3N" type="number" min="0">
+<label>報酬レベル3回数</label><input id="rl3K" type="number" min="0">
+<label>BB終了時（いろはモード）総回数</label><input id="bbModeN" type="number" min="0">
+<label>やちよ・鶴乃モード合計</label><input id="bbModeK" type="number" min="0">
+</div><p class="note">有利区間移行時／AT終了時の「いろは以外」は25.0～50.0%、報酬レベル3は5.1～12.5%。BB終了時のモード選択も設定差あり。</p></div>
+
+<div class="card"><h2>エピソードボーナス選択</h2><div class="grid">
+<label>黒江チャレンジ非経由・EP総数</label><input id="epN" type="number" min="0">
+<label>やちよEP</label><input id="yachiyo" type="number" min="0">
+<label>鶴乃EP</label><input id="tsuruno" type="number" min="0">
+<label>さなEP</label><input id="sana" type="number" min="0">
+<label>フェリシアEP</label><input id="felicia" type="number" min="0">
+<label>黒江EP</label><input id="kuroe" type="number" min="0">
+</div><p class="note">黒江チャレンジ非経由時のキャラ選択率に設定差があります。入力したEP総数と各キャラの合計が大きくズレないようにしてください。</p></div>
+
+<div class="card"><h2>みたまボーナス・ウワサ発展</h2><div class="grid">
+<label>報酬Lv2 ウワサ発展回数</label><input id="lv2N" type="number" min="0">
+<label>Lv2からAT当選</label><input id="lv2K" type="number" min="0">
+<label>報酬Lv3 ウワサ発展回数</label><input id="lv3N" type="number" min="0">
+<label>Lv3からAT当選</label><input id="lv3K" type="number" min="0">
+</div><p class="note">みたまボーナスからATまでの抽選は設定差あり。正確な報酬レベルを把握できた場合のみ入力。</p></div>
+
+<div class="card"><h2>BIG終了画面</h2><div class="grid">
+<label>いろは＆フェリシア（3・5・6示唆）</label><input id="b356" type="number" min="0">
+<label>いろは＆さな（2・4・6示唆）</label><input id="b246" type="number" min="0">
+<label>いろは＆やちよ＆鶴乃（高設定弱）</label><input id="bHighW" type="number" min="0">
+<label>いろは＆やちよ＆ももこ（高設定強）</label><input id="bHighS" type="number" min="0">
+<label>水着みかづき荘（設定2以上）</label><input id="b2" type="number" min="0">
+<label>2nd Season キービジュアル（設定4以上）</label><input id="b4" type="number" min="0">
+<label>1st Season キービジュアル（設定5以上）</label><input id="b5" type="number" min="0">
+<label>小さいキュゥべえ（設定6）</label><input id="b6" type="number" min="0">
+</div></div>
+
+<div class="card"><h2>AT終了画面</h2><div class="grid">
+<label>マギウスメンバー（3・5・6示唆）</label><input id="a356" type="number" min="0">
+<label>みかづき荘メンバー（2・4・6示唆）</label><input id="a246" type="number" min="0">
+<label>まどか＆いろは（設定6）</label><input id="a6" type="number" min="0">
+</div></div>
+
+<div class="card"><h2>ストーリー・キャラ紹介</h2><div class="grid">
+<label>5→4→3→2→1（設定5以上）</label><input id="s54321" type="number" min="0">
+<label>5→1→2→3→4（設定1否定）</label><input id="s51234" type="number" min="0">
+<label>5→2→1→3→4（設定2否定）</label><input id="s52134" type="number" min="0">
+<label>5→3→1→2→4（設定3否定）</label><input id="s53124" type="number" min="0">
+<label>5→4→2→1→3（設定2否定）</label><input id="s54213" type="number" min="0">
+<label>5→4→3→1→2（設定1否定）</label><input id="s54312" type="number" min="0">
+<label>小さいキュゥべえ（キャラ紹介・設定5以上）</label><input id="char5" type="number" min="0">
+</div></div>
+
+<div class="card"><h2>エンディング中カード</h2><div class="grid">
+<label>委員長の魔女（設定1否定）</label><input id="ed1" type="number" min="0">
+<label>石中魚の魔女（設定2否定）</label><input id="ed2" type="number" min="0">
+<label>立ち耳の魔女（設定3否定）</label><input id="ed3" type="number" min="0">
+<label>ヨダカの魔女（設定4否定）</label><input id="ed4" type="number" min="0">
+<label>振子の魔女（設定4否定）</label><input id="ed4b" type="number" min="0">
+<label>舞台装置の魔女（設定4以上）</label><input id="ed4plus" type="number" min="0">
+<label>奇数示唆・弱</label><input id="edOddW" type="number" min="0">
+<label>偶数示唆・弱</label><input id="edEvenW" type="number" min="0">
+<label>奇数示唆・強</label><input id="edOddS" type="number" min="0">
+<label>偶数示唆・強</label><input id="edEvenS" type="number" min="0">
+<label>高設定示唆・弱</label><input id="edHighW" type="number" min="0">
+<label>高設定示唆・強</label><input id="edHighS" type="number" min="0">
+</div></div>
+
+<div class="card"><button id="calc" class="primary">設定推測を計算</button><button id="clear" class="clear">入力をクリア</button></div>
+<div id="result"></div>
+<div class="card"><p class="small">このツールは公開解析値を使った簡易ベイズ推定です。設定示唆の「出現率」が公開されていない演出は、出現した時点で下位設定を除外する処理を基本とし、出現回数そのものには過剰な重みを付けていません。</p></div>
+</main>
+<script>
+const S=[1,2,3,4,5,6];
+const bb=[240.6,236.1,222.8,208.5,195.1,184.3];
+const at=[654.6,633.4,571.8,516.6,456.5,416.7];
+const ch=[60,57.7,55.5,53.5,51.7,50];
+const otherMode=[.25,.30,.35,.40,.45,.50];
+const rl3=[.051,.063,.078,.094,.109,.125];
+const swMag=[.199,.22,.24,.27,.30,.328];
+const swKuroe=[.004,.005,.006,.0065,.0075,.008];
+const epY=[.281,.327,.234,.281,.172,.234];
+const epT=[.281,.234,.313,.156,.219,.141];
+const epS=[.219,.219,.219,.313,.234,.313];
+const epF=[.219,.219,.219,.234,.313,.25];
+const epK=[.001,.001,.016,.016,.063,.063];
+const num=id=>Math.max(0,Number(document.getElementById(id).value)||0);
+function bin(k,n,p){if(!n||!k)return 0;if(k>n)return -Infinity;p=Math.max(1e-9,Math.min(.999999,p));return k*Math.log(p)+(n-k)*Math.log(1-p)}
+function exclude(lp,i,c,min){return c&&S[i]<min?-Infinity:lp}
+function calc(){
+ let lp=S.map(()=>Math.log(1/6)),g=num('g');
+ for(let i=0;i<6;i++){
+  if(g&&num('bb'))lp[i]+=bin(num('bb'),g,1/bb[i]);
+  if(g&&num('at'))lp[i]+=bin(num('at'),g,1/at[i]);
+  if(num('cg'))lp[i]+=bin(num('ch'),num('cg'),1/ch[i]);
+  if(num('modeN'))lp[i]+=bin(num('modeOther'),num('modeN'),otherMode[i]);
+  if(num('rl3N'))lp[i]+=bin(num('rl3K'),num('rl3N'),rl3[i]);
+  if(num('swN')){lp[i]+=bin(num('swK'),num('swN'),swMag[i]);lp[i]+=bin(num('swBK'),num('swN'),swKuroe[i]);}
+  if(num('epN')){
+   lp[i]+=bin(num('yachiyo'),num('epN'),epY[i]);lp[i]+=bin(num('tsuruno'),num('epN'),epT[i]);
+   lp[i]+=bin(num('sana'),num('epN'),epS[i]);lp[i]+=bin(num('felicia'),num('epN'),epF[i]);lp[i]+=bin(num('kuroe'),num('epN'),epK[i]);
+  }
+  if(num('lv2N'))lp[i]+=bin(num('lv2K'),num('lv2N'),[.05,.06,.07,.08,.09,.10][i]);
+  if(num('lv3N'))lp[i]+=bin(num('lv3K'),num('lv3N'),[.10,.12,.14,.16,.18,.20][i]);
+  if(num('bbModeN'))lp[i]+=bin(num('bbModeK'),num('bbModeN'),[.223,.25,.28,.31,.34,.359][i]);
+
+  const lows=[
+   [num('b2'),2],[num('b4'),4],[num('b5'),5],[num('b6'),6],[num('a6'),6],[num('char5'),5],[num('s54321'),5],[num('ed4plus'),4],
+   [num('ed1'),2],[num('ed2'),3],[num('ed3'),4],[num('ed4'),5],[num('ed4b'),5]
+  ];
+  for(const [c,m] of lows)lp[i]=exclude(lp[i],i,c,m);
+  // ストーリー否定
+  if(num('s51234')&&i===0)lp[i]=-Infinity;
+  if(num('s52134')&&i===1)lp[i]=-Infinity;
+  if(num('s53124')&&i===2)lp[i]=-Infinity;
+  if(num('s54213')&&i===1)lp[i]=-Infinity;
+  if(num('s54312')&&i===0)lp[i]=-Infinity;
+
+  // 3/5/6 と 2/4/6 系は、出現したら該当外を除外するだけではなく軽い尤度差を付ける
+  if(num('b356')+num('a356'))lp[i]+=Math.log([.45,.35,1,.35,1,.8][i])*(num('b356')+num('a356'));
+  if(num('b246')+num('a246'))lp[i]+=Math.log([.35,1,.35,1,.35,1][i])*(num('b246')+num('a246'));
+  if(num('bHighW'))lp[i]+=Math.log([.8,.9,1,1.08,1.16,1.24][i])*num('bHighW');
+  if(num('bHighS'))lp[i]+=Math.log([.65,.8,1,1.15,1.3,1.5][i])*num('bHighS');
+  if(num('edOddW'))lp[i]+=(S[i]%2?Math.log(.65):Math.log(.35))*num('edOddW');
+  if(num('edEvenW'))lp[i]+=(S[i]%2===0?Math.log(.65):Math.log(.35))*num('edEvenW');
+  if(num('edOddS'))lp[i]+=(S[i]%2?Math.log(.75):Math.log(.25))*num('edOddS');
+  if(num('edEvenS'))lp[i]+=(S[i]%2===0?Math.log(.75):Math.log(.25))*num('edEvenS');
+  if(num('edHighW'))lp[i]+=Math.log([.8,.9,1,1.08,1.16,1.25][i])*num('edHighW');
+  if(num('edHighS'))lp[i]+=Math.log([.65,.8,1,1.15,1.3,1.5][i])*num('edHighS');
+ }
+ if(lp.every(x=>!Number.isFinite(x))){document.getElementById('result').innerHTML='<div class="card warn">入力した設定示唆に矛盾があります。否定系・設定○以上・設定6系の入力を確認してください。</div>';return}
+ const mx=Math.max(...lp),w=lp.map(x=>Number.isFinite(x)?Math.exp(x-mx):0),z=w.reduce((a,b)=>a+b,0),q=w.map(x=>100*x/z),bi=q.indexOf(Math.max(...q));
+ let h='<div class="card"><h2>設定推測結果</h2><div class="result">設定'+S[bi]+'：'+q[bi].toFixed(1)+'%</div><div class="bar"><i style="width:'+q[bi]+'%"></i></div><table><tr><th>設定</th><th>推定割合</th></tr>';
+ q.forEach((x,i)=>h+='<tr><td>設定'+S[i]+'</td><td>'+x.toFixed(1)+'%</td></tr>');
+ h+='</table><p class="small">※公式の設定期待度ではありません。公開された設定差・示唆を統合した簡易推定です。</p></div>';
+ document.getElementById('result').innerHTML=h;document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('calc').onclick=calc;
+document.getElementById('clear').onclick=()=>{document.querySelectorAll('input').forEach(x=>x.value='');document.getElementById('result').innerHTML=''};
+</script></body></html>
